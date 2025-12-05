@@ -1,0 +1,187 @@
+* {
+    box-sizing: border-box;
+    margin: 0 5px;
+    padding: 0;
+    font-family: "Century gothic", "Calibri", "sans-serif"
+    
+}
+
+.green {
+    color:#67bc7f;
+}
+
+.orange {
+    color:#dc923d;
+}
+
+ul {
+    list-style-type: circle;
+    padding: 0px 20px;
+}
+body, .normal {
+    font-weight: 500;
+    font-size: 16px;
+    color: #b3e1f2;
+    background-color:#191c7d;
+
+}
+
+h2 {
+    color: #655fad;
+}
+
+.h2Purple {
+    padding: 10px;
+    color: #cc9ef0;
+}
+
+h3 {
+    color: #b3e1f2;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.underline {
+    text-decoration: underline;
+}
+
+.highlight {
+    background-color:#a7069f
+}
+
+.sup {
+    color: #b3e1f2;
+}
+
+.sup_orange {
+    color:#dc923d;
+}
+
+button {
+    /* background-color:#4549c4; */
+    transition: all 0.3s ease 0s;
+    padding: 9px 25px;
+    background-color: RGBA(69, 73, 196,1);
+    border: none;
+    color: #b3e1f2;
+    border-radius: 50px;
+    cursor: pointer;
+}
+
+button:hover{
+    background-color: RGBA(69, 73, 196, 0.5);
+
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 20px;
+}
+
+
+
+.navbar {
+    list-style-type: none;
+    margin-left: 10px;
+}
+
+.navbar li {
+    display: inline-block;
+    padding: 0px 20px;
+    cursor: pointer;
+}
+
+.navbar li a {
+    transition: all 0.3s ease 0s;
+    color: #b3e1f2;
+    text-decoration: none;
+}
+
+.navbar li a:hover {
+    color: #84b872;
+}
+
+.myPeperi {
+    padding: 0, 0, 0, 10px; 
+    transition: all 0.3s ease 0s;
+    color: #b3e1f2;
+    text-decoration: none;
+}
+
+.myPeperi:hover {
+    color: #84b872;
+}
+
+#Scikit-learn ul {
+    display: inline-block;
+    justify-content: space-between;
+    gap: 20px;
+
+}
+.scikit-container {
+    background-image: linear-gradient(to left,#974783,rgb(161, 61, 168),#8b3da8,#3d3fa8);
+    padding: 15px 30px;
+    margin: 30px 20px;
+    border-radius: 20px;
+}
+
+.scikit-container a{
+    color: #b3e1f2;
+    text-decoration: none;
+    justify-content: space-between;
+}
+
+.scikit-container a:hover{
+    color: #84b872;
+}
+
+.myPeperi:focus, .navbar a:focus, button:focus, .scikit-container a:focus, .sup:focus{
+    background-color: #066219;
+}
+
+
+.scikit-container li {
+    display: inline-block;
+    padding: 5px 20px;
+}
+
+#leftImg {
+    width: 300x;
+    height: auto;
+}
+
+#rightImg {
+    width: 300px;
+    height: auto;
+}
+
+#Home {
+    
+}
+
+#Scikit-learn li:hover {
+    /* background-color: #4549c4; */
+    color: #b3e1f2;
+}
+
+
+
+#Logistic, #KNN, #SVM, #Decision, #Random, #Naive, #Gradient {
+    margin:0;
+    padding: 10px 10px;
+}
+
+@media screen and (max-width: 768px) {
+    .navbar li {
+        padding: 0px 5px;
+    }
+    
+    .scikit-container li {
+        padding: 10px 10px;
+    }
+
+}

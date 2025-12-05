@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+<body>
+    <header>
+        <a class="myPeperi" href="#Home">Machine Learning</a>
+        <nav>
+            <ul class="navbar">
+                <li><a href="#Home">Home</a></li>
+                <li><a href="#Scikit-learn">Scikit-learn</a></li>
+                <li><a href="#Upcoming">Upcoming</a></li>
+            </ul>
+        </nav>
+        <a class="cta" href="#"><button>A button</button></a>
+    </header>
+    <section id="Home">
+        <h2 class="h2Purple">˗ˏˋ Machine Learning Home</h2>
+        <p><br>Machine learning is a way of teaching computers to solve problems without explicitly writing every command. Instead we feed the computer training data or examples and allow the computer to learn and discover patterns on its own.<br></p>
+            <h2><br>Consider the following factors and limitations:<br><br></h2>
+        <ul>
+            <li>Data quality: The algorithm learns from patterns present in the training data. Biased training data produces biased predictions. Incomplete data leads to poor generalization.</li>
+            <li>Overfitting: Memorizing training data instead of learning generalizable<sup><a href="generalizable" class="sup">g</a></sup> patterns. Regularization<sup><a href="regularization" class="sup">r</a></sup> will need fine tuning, but could help.</li>
+            <li>Interpretability varies per approach: Linear models can explain why and are used for loans, medical and legal stuff. Neural networks are used for images, games and when accuracy matters most.</li>
+            <li>Computational requirements scale with problem complexity: Training ML models demand processing power and memory. Cloud computing and specialized hardware are examples of powerful models, but costly.</li>
+        </ul>
+        <!-- <img src="img/leftImg.png" alt="Photo of me" id="leftImg">
+        <img src="img/rightImg.png" alt="myPeperi World letter art" id="rightImg"> -->
+    </section>
+    <section><div class="scikit-container" id="Scikit-learn">
+        <ul>
+            <li><a href="#Logistic">Logistic Regression</a></li>
+            <li><a href="#KNN">KNN</a></li>
+            <li><a href="#SVM">SVM</a></li>
+            <li><a href="#Decision">Decision Trees</a></li>
+            <li><a href="#Random">Random Forest</a></li>
+            <li><a href="#Naive">Naive Bayes</a></li>
+            <li><a href="#Gradient">Gradient Boosting</a></li>
+            <li><a href="#deBugSci">Debugging</a></li>
+        </ul>
+    </div>
+    </section>
+    <section>
+    <h2>Import<br></h2>
+        <p class="orange">import numpy<sup><a href ="numpy" class="sup_orange">n</a></sup> as np<br>import pandas<sup><a href="pandas" class="sup_orange">p</a></sup> as pd<br>from sklearn.model_selection import train_test_split</p>
+        <p><br>Encoder:<br></p>
+        <p class="orange">from sklearn.preprocessing import LabelEncoder</p>
+        <p><br>Long texts encoder:</p>
+        <p class="orange">from sklearn.feature_extraction.text import CountVectorizer, TfidfVectorizer</p>
+        <p><br>Accuracy:<br></p>
+        <p class="orange">from sklearn.metrics import r2_score, accuracy_score, confusion_matrix, classification_report</p>
+        <p class="green">r2_score is for regressors, accuracy_score is for classification. </p>
+    </section>
+    <section id="Logistic">
+        <h2 class="h2Purple">˗ˏˋ Logistic Regression</h2>
+        <p><br> There are two types of logistic regressions:
+            <ul>
+                <li>Binary LG: Simple yes/no questions with clear patterns (2 classes)</li>
+                <li>Multiclass LG: Trains multiple yes/no classifiers (one for each category), then picks whichever one says "yes" the loudest or highest percentage (3+ classes)</li>
+            </ul></p>
+            <p><br><span class="underline">Ex Binary LG:</span><br></p>
+                <li>Is this email spam? Spam/not spam</li>
+                <li>Is this transaction fradulent? Fraud/legitimate</li>
+                <li>Will this student pass or fail? Pass/fail</li>
+            </ul>
+            <p><br><span class="underline">Ex Multiclass LG:</span><br></p>
+                <li>What cognitive distortion? Labeling/Mind Reading/Catastophizing,... (9 classes)</li>
+                <li>What emotion? Happy/Sad/Angry (3 classes)</li>
+                <li>What news category? Politics/Sports/Tech/Entertainment (4+ classes)</li>
+            </ul>
+        <h2>Import</h2>
+        <p class="orange">from sklearn.linear_model import LogisticRegression</p>
+        <h2>PolyFeatures:<br></h2>
+        <p>Optimization to make a model smarter by introducing polynomial features, expand features generating way more data</p>
+        <p>Don't use PolyFeatures when...</p>
+        <ul>
+            <li>Tree based model (non-linear)</li>
+            <li>Lots of features (slow AI)</li>
+            <li>Deep learning (non-linear)</li>
+            <li>Relationship is linear</li>
+            <li>Text/NLP problems</li>
+        </ul>
+        <h2>Hyper parameters:<br></h2>
+        <ul>
+            <li>solver = 'lbfgs', 'saga':
+                <ul>
+                    <li>'lbfgs': Good for small datasets</li>
+                    <li>'saga': Good for large datasets</li>
+                </ul>
+            </li>
+            <li>C = 0.001-100:
+                <ul>
+                    <li>Small C (0.01) = Strong regularization (simpler model)</li>
+                    <li>Large C (10.0) = Weak regularization <sup><a href="#regularization"  class="sup">r</a></sup> (complex model)</li>
+                </ul>
+            </li>
+        </ul>
+    </section>
+    <section id="KNN">
+        <h2 class="h2Purple">˗ˏˋ K-Nearest Neighbors</h2>
+        <p><br><span class="bold">Best for: </span>Grouping similar things together<br><br><span class ="underline">Examples:</span></p>
+        
+        <ul>
+            <li>Movie recommendations (People who enjoyed Movie A also enjoyed movie...)</li>
+            <li>Medical diagnosis (do symptoms match similar past cases)</li>
+            <li>Real estate pricing (houses in similar neighborhoods cost similar amounts)</li>
+        </ul>
+        <h2>Import</h2>
+        <p class="orange">from sklearn.preprocessing import StandardScaler<br>from sklearn.neighbors import KNeighborsClassifier</p>
+        <h2>Hyper parameters:<br></h2>
+        <ul>
+            <li>n_neighbors = 3-15: small (3-5) complex boundaries, large (11-15) smoother boundaries</li>
+            <li>weights = 'uniform'/'distance':</li>
+            <ul>
+                <li>'uniform': Neighbors have equal vote</li>
+                <li>'distance':Closer neighbors have more influence, <span class="highlight">usually better</span></li>
+            </ul>
+            <li>Metric = 'euclidean'/'manhattan'/minkowski':</li>
+            <ul>
+                <li>'euclidean' = default or straight-line distance</li>
+                <li>'manhattan' = City-block distance</li>
+                <li>'minkowski' = Generalization of both</li>
+            </ul>
+        </ul>
+    </section>
+
+    <section id="SVM">
+        <h2 class="h2Purple">˗ˏˋ Support Vector Machines</h2>
+        <p><br><span class="bold">Best for: </span>When you have clean data<sup><a href="cleanData" class="sup">c</a></sup>, very accurate and handles complex problems well<br><br><span class ="underline">Examples:</span></p>
+        
+        <ul>
+            <li>Face recognition</li>
+            <li>Article categorization into diverse topics</li>
+            <li>Image classification (cat vs dog)</li>
+        </ul>
+        <h2>Import</h2>
+        <p class="orange">from sklearn.svm import LinearSVC</p>
+        <h2>Hyper parameters:<br></h2>
+        <ul>
+            <li>C = 0.1-100: Regularization<sup><a href="#regularization" class="sup">r</a></sup> strength 
+                <ul>
+                    <li>0.1 (small C): Simple boundary, tolerates mistakes</li>
+                    <li>100 (large C): Complex boundary, fewer mistakes</li>
+                </ul></li>
+            <li>kernel = 'linear','rbf', 'poly': for SVC <span class="underline">NOT LinearSVC</span>
+                <ul>
+                    <li>'linear': Straight line/plane, fast and simple</li>
+                    <li>'rbf': <span class="highlight">Most popular</span> , curved boundaries, flexible</li>
+                    <li>'poly': polynomial curves (specialized use)</li>
+                </ul>
+            </li>
+            <li>gamma = 0.001-10 or 'scale': 
+                <ul>
+                    <li>0.001: Far-reaching influence (looks at big circle of area affected) or smooth boundaries</li>
+                    <li>'scale': <span class="highlight">Default</span>, auto-calculate based on features<sup><a href="#features" class="sup">f</a></sup></li>
+                    <li>10: Large, short range influence (looks at tiny circle of area affected) or complex boundaries</li>
+                </ul>
+            </li>
+        </ul>
+    </section>
+
+    <section id="Decision">
+        <h2 class="h2Purple">˗ˏˋ Decision Trees</h2>
+        <p><br><span class="bold">Best for: </span>When you need an explanation for why a decision was made<br><br><span class ="underline">Examples:</span></p>
+        
+        <ul>
+            <li>Brave New World Caste Classification</li>
+            <li>Medical diagnosis that doctors need to understand</li>
+            <li>Loan approval (bank must explain and understand why someone was rejected by bank)</li>
+        </ul>
+        <h2>Import</h2>
+        <p class="orange">from sklearn.tree import DecisionTreeClassifier</p>
+        <h2>Hyper parameters:<br></h2>
+        <ul>
+            <li>max_depth = 3-30 or 'None': 
+                <ul>
+                    <li>3-5: Small, simple, risk of underfitting<sup><a href="#underfitting" class="sup">u</a></sup></li>
+                    <li>10-20 = Balanced depth</li>
+                    <li>None = Unlimited depth, risk of overfitting<sup><a href = "#overfitting" class="sup">o</a></sup></li>
+                </ul>
+            </li>
+            <li>min_samples_split = 2-20:
+                <ul>
+                    <li>2: Small, split aggressively<sup><a href="#splitAggresively" class="sup">s</a></sup> or</li>
+                    <li>10: <span class="highlight">Balanced</span> </li>
+                    <li> 20+: Conservative splitting<sup><a href="#conservativeSplitting" class="sup">c</a></sup> or </li>
+                </ul>
+            </li>
+            <li>min_samples_leaf = 1-50: Minimum samples in leaf node<sup><a href="leafNode" class="sup">l</a></sup>
+                <ul>
+                    <li>1: Very detailed, risk of overfitting<sub><a href="#overfitting">o</a></sub></li>
+                    <li>5-10: <span class="highlight">Balanced</span></li>
+                    <li>20+: Conservative (fewer, bigger decisions), simpler tree</li>
+                </ul>
+            </li>
+            <li>criterion = 'gini'/'entropy': mesure quality of split<sup><a href="#split" class="sup">s</a></sup>
+                <ul>
+                    <li>'gini: Default, slightly faster</li>
+                    <li>'entropy': Sometimes slightly better, information gain</li>
+                </ul>
+            </li>
+        </ul>
+    </section>
+
+    <section id="Random">
+        <h2 class="h2Purple">˗ˏˋ RandomForest - Regressor/Classifier</h2>
+        <p><br><span class="bold">Best for: </span>Decision Tree accuracy but better, handles messy data well<br><br><span class ="underline">Examples:</span></p>
+        
+        <ul>
+            <li>Stock market prediction</li>
+            <li>Disease prediction</li>
+            <li>Predicting who will click on ads</li>
+        </ul>
+        <h2>Import</h2>
+        <p class="orange">from sklearn.ensemble import RandomForestRegressor <span class="normal">or</span><br>from sklearn.ensemble import RandomForestClassifier</p>
+        <h2>Hyper parameters:<br></h2>
+        <ul>
+            <li>n_estimators = 100-500: more than 300 trees produce smaller improvements, otherwise better performance but slower with more trees</li>
+            <li>max_depth = 10-30 or none: controls how many questions deep ~10-30</li>
+            <li>min_samples_split = 2-10: higher is less overfitting</li>
+            <li>min_samples_leaf = 1-4: higher means smoother boundaries, minimmum number of samples<sup><a href="#samples" class="sup">s</a></sup>that must be in leaf-node<sup><a href="#leafNode" class="sup">l</a></sup></li>
+            <li>max_features = 'sqrt'/'log2'/'None': sqrt is good default, none means all features</li>
+        </ul>
+    </section>
+
+    <section id="Naive">
+        <h2 class="h2Purple">˗ˏˋ Naive Bayes</h2>
+        <p><br><span class="bold">Best for: </span>text classification, Naive Bayes is very fast<br><br><span class ="underline">Examples:</span></p>
+        
+        <ul>
+            <li>Spam email detection</li>
+            <li>Is this review positive or negative</li>
+            <li>Document categorization (sports, politics, entertainment)</li>
+            <li>Real-time classification with instant results</li>
+        </ul>
+        <h2>Import</h2>
+        <p class="orange">from sklearn.naive_bayes import MultinomialNB</p>
+        <h2><br>sep = 't'<br></h2>
+        <p>Tabs separated columns means commas don't matter in text.</p>
+        <h2><br>Text vectorization:<br></h2>
+        <p>Converts text into numerical vectors that represent how much each word is valued. It's for multiple words that <span class="underline">ALL</span> matter. Numerical vectors are arrays of numbers that can be processed by machine learning algorithmns.<br><br>TF-IDF
+            <ul>
+                <li>TF: Term Frequency, how often does this word appear in this review</li>
+                <li>IDF: Inverse Document Frequency, how rare/unique is this word across all (in this case) reviews</li>
+            </ul><br>from sklearn.feature_extraction.text import CountVectorizer, TfidfVectorizer</p>
+            <p><br><span class="underline">stop_words = 'english'</span> ignores common words like "a", "the" from a predefined list.</p>
+        <img src="img/textVector.JPG">
+        
+
+        <h2><br>Hyper parameters:<br></h2>
+        <h3>If import Gaussian Naive Bayes</h3>
+        <ul>
+            <li>var_smoothing = 1e-12/1e-9/1e-6:
+                <ul>
+                    <li>1e-12: small and sensitive, trust every observation</li>
+                    <li>1e-9: Balanced, add tiny bit of doubt</li>
+                    <li>1e-6: Conservative<sup><a href="#conservativeModel" class="sup">c</a></sup> and very cautious</li>
+                </ul>
+            </li>
+        </ul>
+        <h3>If import Multinomial Naive Bayes</h3>
+        <ul>
+            <li>alpha = 0.001-5.0: Controls how much "smoothing" is applied to handle words the model hasn't seen before
+                <ul>
+                    <li>0.001-0.1: Confident in training set with large clean datasets</li>
+                    <li>0.1-1.0: <span class="underline">Most cases</span>, medium dataset, use this when you are not sure what to use. For 100-10,000 samples</li>
+                    <li>1.0-5.0: More smoothing where model is less confident in training data, more conservative in other words cautious</li>
+                    <li>5.0-100.0: Extreme smoothing where model ignores training data patterns with random predictions</li>
+                </ul>
+            </li>
+        </ul>
+    </section>
+
+    <section id="Gradient">
+        <h2 class="h2Purple">˗ˏˋ Gradient Booster<br></h2>
+        <p>HistGrandientBoosterRegressor is faster than standard GrandientBoosterRegressor</p>
+        <p><br><span class="bold">Best for: </span>Importance for best accuracy possible. However, slow and complex<br><br><span class ="underline">Examples:</span></p>
+        
+        <ul>
+            <li>Search engine ranking (Google uses this!!)</li>
+            <li>Credit scoring (important to be accurate!)</li>
+            <li>Disease diagnosis where accuracy is critical</li>
+        </ul>
+        <h2>Import</h2>
+        <p class="orange">from sklearn.ensemble import GradientBoostingClassifier <span class="normal">or</span> from sklearn.ensemble import HistGradientBoostingClassifier <span>or regressor:</span> from sklearn.ensemble import GradientBoosterRegressor</p>
+        <h2>Hyper parameters:<br></h2>
+        <ul>
+            <li>max_iter = 50-300: controls how many trees to build ~100, adjust and experiment to find most precise model</li>
+            <li>max_depth = 3-10: controls how many questions deep</li>
+        </ul>
+            <li>learning_rate = 0.01-0.1: 
+                <ul>
+                    <li>Lower = slower learner, needs more iterations<sup><a href="#iterations" class="sup">i</a></sup></li>
+                    <li>Higher = faster learner, fewer iterations<sup><a href="#iterations" class="sup">i</a></sup></li>
+                </ul>
+            </li>
+            <li>max_leaf_nodes = 31-100: alt to max_depth</li>
+            <li>min_samples_leaf = 10-50: Higher is less overfitting<sup><a href="#overfitting">o</a></sup></li>
+    </section>
+
+    <section id="Other1">  
+        <h2 class="h2Purple">Others:</h2>
+        <h2><br>Joblib</h2>
+        <p><br>Wasting time re-training the model?</p>
+        <p>Save the trained model and load it whenever you need it!</p>
+        <p><span class="orange">import joblib</span> just import</p>
+        <p>After...<br>model.fit(X_train, y_train)<br><span class="highlight">joblib.dump(model, "my_model.joblib")</span><br>Then after,<br><span class="highlight">
+model = joblib.load("my_model.joblib")</span><br>Which is before the y_pred code</p>
+        <h2><br>Regressors vs classifications</h2>
+        <p><br>Regressors sees data as numbers, classification is best for text data</p>
+        <p><span class="highlight">r2_score is for linear regressions</span> (different from logistic regression),<span class="highlight">accuracy_score is for classifiers</span> accuracy expects exact matches like pass/fail not $100 234 213.94, its for classification! </p>
+        <h2><br>StandardScaler vs MinMaxScaler: </h2>
+        <p><br>StandardScaler is better for models that assume linear distribution and is less affected by outliers, while MinMaxScaler is more affected my outliers.</p>
+        <h2><br>Encoder</h2>
+        <p><br>Encoder can also convert number predictions back to text labels, additionally to converting text to number. Scikit-learn classifiers allow y to be ints, str, categories with the ONE requirement every value in y must be a single label per row</p>
+        <h3>1D Array</h3>
+        <p>from sklearn.preprocessing import LabelEncoder</p>
+        <img src="img/oneDEncoder.jpg" alt="1D label encoder code">
+        <h3>2D Array</h3>
+        <p><span class="orange">X_encoded = pd.get_dummies(X, drop_first=True)</span><br>drop_first=True without it causes multicollinearity<sup><a href="#multiC">m</a></sup> with it removes unnecessary columns (repeated or unnecessary</p>
+        <h3>Inverse</h3>
+        <p class="orange">y_user = label_encoder.inverse_transform(y_user)<br>print(f"Cognitive Distortion: {y_user[0]}")</p>
+        <h2 id="numpy"><br>NumPy:</h2>
+        <p><br>An open source python library used when working with arrays/matrices (numerical data), do fast calculations, manipulate data shapes or generate random data for testing or initialization.</p>
+        <ol>
+            <li>Array sorting:<br>e.g. sort order of probabilities with <br><span class="orange">sorted_indices = np.argsort(probabilities)[::-1]</span> returns indices (indexes) in order</li>
+            <li>Array math operations:<br>calculations with arrays<br><span class="orange">X = np.array([1, 2, 3], [4, 5, 6])<br>X*2</span><br>Returns: [[2, 4, 6], [8, 10, 12]]</li>
+            <li>Reshaping data:<br>Sklearn expects 2D arrays even if you are trying to get one pred<br><span class="orange">X_single = np.array([0.5, 0.3, 0.8])<br>X_single = X_single.reshape(1, -1)</span>Now sklearn can use it to predict</li>
+            <li>Random data generator for testing:<br>Quick way of creating test data for experimenting<br><span class="orange">X_test = np.random.randn(100, 10)</span> #100 samples, 10 features <br><span class="orange">y_test=np.random.randint(0, 3, 100)</span> #100 labels (0, 1, 2)<br><br><span class="green">Set random seed for reproducibility</span><br><span class="orange">np.random.seed(42)<br>X = np.random.randn(50,5)</span></li>
+            <li>Converting between types</li>
+            <li>Checking array properties</li>
+            <li>Indexing and slicing</li>
+            <li>Matrix operations (advanced ML)</li>
+        </ol>
+        <h2><br>random_state:</h2>
+        <p><br>Models that need random_state:</p>
+        <ul>
+            <li>RandomForestClassifier</li>
+            <li>GradientBoostingClassifier and HistGradientBoostingClassfier</li>
+            <li>LogisticRegression</li>
+            <li>DecisionTreeClassfier</li>
+            <li>MLPClassifier</li>
+        </ul>
+        <p><br>Models that don't use random_state but something else instead to determine the same result(splitting data still need random_state):</p>
+        <ul>
+            <li>KNeighborsClassifier(n_neighbors = 5)</li>
+            <li>LinearSVC(max_iter=1000)</li>
+        </ul>
+        <p>No random_state exist for these ^</p>
+        <h2><br>stratify=y</h2>
+        <p><br>statify ensures your train and test sets have the same PROPORTIONS of each class: sports (25%), politics (25%), tech (25%), entertainment (25%)<br><span class= orange>X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.2, random_state = 42, stratify=y)</span></p>
+        <h2 class="purple" id="deBugSci"><br>Debugging</h2>
+        <ul>
+            <br>
+            <li>Checking column names:<span class="orange">print(df.columns.tolist())</span></li>
+            <br>
+            <li>See first 5 rows: <span class="orange">print(df.head())</span><br>See last 10 rows:<span class="orange">print(df.tail(10))</span></li>
+            <br>
+            <li>Check dimensions:<br>Shape (rows, columns) = (1000, 2)<span class="orange">print(df.shape)</span><br>Number of rows:<span class=orange">print(len(df))</span><br>Print detailed info <span class="orange">print(df.info())</span><br><img src="img/skDataShape.jpg"></li>
+            
+            <br>
+            <li>Check data types (text or numbers):<br>All column types:<span class="orange">print(df.dtypes)</span><br>Specific column<span class="orange">print(df['Thought'].dtype)</span>int and float will print with 64 at the end (int64)</li>
+            <br>
+            <li>Check what object variable belongs to:<span class="orange">print(type(X))</span><br>Model type:<span class="orange">print(type(model))</span></li>
+            <br>
+            <li>Check for missing data:<br>Check for any missing values (True/False):<span class="orange">print(df.isnull().any().any())</span><br>Show rows with missing values<span class="orange">print(df[df.isnull().any(axis=1)])</span><br>Percentage of missing values:<span class="orange">print(df.isnull().sum() / len(df) * 100)</span></li>
+            <br>
+            <li>Check unique values and counts:<br>Check unique values of a certain column:<span class="orange">print(df['Column_name'].unique())</span><br>Number of unique values of a certain column:<span class="orange">print(df['Column_name'].nunique())</span><br>Count of how many values per unique value (Labeling = 112, Mind Reading = 108)<span class="orange">print(df['Column_name'].value_counts())</span><br>The above with percents (labeling 0.112 (11.2%))<span class="orange">print(df['Column_name'].value_counts(normalize=True))</span></li>
+            <br>
+            <li>Check arrays/matrix shapes (NumPy):<br>1D Array (Output: (5,))<span class="orange"><br>y_encoded = np.array([0,1,2,3,4])<br>print(y_encoded.shape)</span><br>2D array (Output):<span class="orange"><br>X_array = np.array([1,2,3],[4,5,6])<br>print(X_array.shape)</span><br>TF-IDF matrix:<br><span class="orange">X_train_tfidf = vectorizer.fit_transform(X_train)<br>print(X_train_tdidf.shape)</span><br>Check if 1D or 2D <span class="orange">print(f"Dimensions: {X_train_tdidf.ndim}D")</span><br>Total elements (e.g. 400000)<span class="orange">print(f"Total elements: {X_train_tfidf.size}")</span></li>
+            <!-- <li><span class="orange"></span></li> -->
+
+        </ul>
+    </section>
+    <footnotes>
+    <h2 class="h2Purple">Footnotes</h2>
+        <sup>p</sup><p id="pandas">pandas: Library for working with data tables (CSV files)</p>
+        <sup>s</sup><p id="samples">Samples: Data points</p>
+        <sup>l</sup><p id="leafNode">Leaf node: Final decision box (all sorted), therefore root node is the first box</p>
+        <sup>i</sup><p id="iterations">Iterations: Process of repeating a set of intructions to achieve a goal</p>
+        <sup>o</sup><p id="overfitting">Overfitting: When a machine learning model learns the <span class="underline">training</span> data too well and captures noise (random or irrelevant data) and outliers</p>
+        <sup>u</sup><p id="underfitting">Underfitting: Too simple to capture the pattern in data, resulting in poor performance for both training and testing datasets.</p>
+        <sup>r</sup><p id="regularization">Regularization: Machine learning techniques to prevent overfitting by adding a penalty when the model's complexity is too high.</p>
+        <sup>g</sup><p id="generalizable">Generalizable: Model's ability to perform well on previously unseen data.</p>
+        <sup>c</sup><p id="cleanData">Clean data: Data with no errors or missing values and is ready to use for machine learning</p>
+        <sup>c</sup><p id="conservativeModel">Conservative Model: Less complex model aimed to minimize overfitting</p>
+        <sup>f</sup><p id="features">Features: Individual, mesurable properties or characteristics of data used as input for a model to make predictions</p>
+        <sup>s</sup><p id="splitAggresively">Split Aggresively: Split whenever possible, asks lots of questions even with very little data</p>
+        <sup>c</sup><p id="conservativeSplitting">Conservative Splitting: Being picky about splitting and asking a question only if it's worth it (& if we have enough data)</p>
+        <sup>s</sup><p id="split">Splitting: Decision tree splits when ividing the data by asking a new question</p>
+        <sup>m</sup><p id="multiC">Multicollinearity: Wastes memory, slows down training, cause numerical instability and gives misleading feature importance</p>
+        
+
+        
+    </footnotes>
+</body>
+</html>
