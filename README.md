@@ -6,7 +6,7 @@ Hi I'm Peperi. This is an interactive website I made showcasing what I learned a
 Visit the site: https://peppapigx10.github.io/introML/
 
 ## What it Does
-sing HTML and CSS this website demonstrates my current knowledge of scikit-learn. Users can explore different machine learning models via an interactive gradient box interface.
+Using HTML and CSS this website demonstrates my current knowledge of scikit-learn. Users can explore different machine learning models via an interactive gradient box interface.
 The site covers:
 
 - Classification models (KNN, Naive Bayes etc...)
