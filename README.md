@@ -5,6 +5,8 @@ Hi I'm Peperi. This is an interactive website I made showcasing what I learned a
 
 Visit the site: https://peppapigx10.github.io/introML/
 
+My sklearn projects: https://github.com/peppapigX10/sklearn-projects.git
+
 ## What it Does
 Using HTML and CSS this website demonstrates my current knowledge of scikit-learn. Users can explore different machine learning models via an interactive gradient box interface.
 The site covers:
